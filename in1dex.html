@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+	<meta http-equiv="Content-type" content="text/html; charset=windows-1251">
+	<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+	<title>Primvol</title>
+	<link rel="stylesheet" href="css/styles.css" type="text/css">
+	<link href='https://fonts.googleapis.com/css?family=Roboto&subset=cyrillic' rel='stylesheet' type='text/css'>
+	<script src="jquery-1.7.2.min.js"></script>
+	<!--[if lt IE 9]>
+	<script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+</head>
+
+<script>
+
+/*
+
+HW Slider - простой слайдер на jQuery. 
+
+Настройки скрипта:
+
+hwSlideSpeed - Скорость анимации перехода слайда.
+hwTimeOut - время до автоматического перелистывания слайдов.
+hwNeedLinks - включает или отключает показ ссылок "следующий - предыдущий". Значения true или false
+
+Подробнее на http://heavenweb.ru/
+
+*/
+(function ($) {
+var hwSlideSpeed = 700;
+var hwTimeOut = 5000;
+var hwNeedLinks = true;
+
+$(document).ready(function(e) {
+	$('.slide').css(
+		{"position" : "absolute",
+		 "top":'0', "left": '0'}).hide().eq(0).show();
+	var slideNum = 0;
+	var slideTime;
+	slideCount = $("#slider .slide").size();
+	var animSlide = function(arrow){
+		clearTimeout(slideTime);
+		$('.slide').eq(slideNum).fadeOut(hwSlideSpeed);
+		if(arrow == "next"){
+			if(slideNum == (slideCount-1)){slideNum=0;}
+			else{slideNum++}
+			}
+		else if(arrow == "prew")
+		{
+			if(slideNum == 0){slideNum=slideCount-1;}
+			else{slideNum-=1}
+		}
+		else{
+			slideNum = arrow;
+			}
+		$('.slide').eq(slideNum).fadeIn(hwSlideSpeed, rotator);
+		$(".control-slide.active").removeClass("active");
+		$('.control-slide').eq(slideNum).addClass('active');
+		}
+if(hwNeedLinks){
+var $linkArrow = $('<a id="prewbutton" href="#">&lt;</a><a id="nextbutton" href="#">&gt;</a>')
+	.prependTo('#slider');		
+	$('#nextbutton').click(function(){
+		animSlide("next");
+		return false;
+		})
+	$('#prewbutton').click(function(){
+		animSlide("prew");
+		return false;
+		})
+}
+	var $adderSpan = '';
+	$('.slide').each(function(index) {
+			$adderSpan += '<span class = "control-slide">' + index + '</span>';
+		});
+	/*$('<div class ="sli-links">' + $adderSpan +'</div>').appendTo('#slider-wrap');*/
+	$(".control-slide:first").addClass("active");
+	$('.control-slide').click(function(){
+	var goToNum = parseFloat($(this).text());
+	animSlide(goToNum);
+	});
+	var pause = false;
+	var rotator = function(){
+			if(!pause){slideTime = setTimeout(function(){animSlide('next')}, hwTimeOut);}
+			}
+	$('#slider-wrap').hover(	
+		function(){clearTimeout(slideTime); pause = true;},
+		function(){pause = false; rotator();
+		});
+	rotator();
+});
+})(jQuery);
+
+</script>
+
+<body>
+	<div id="wrapper">
+		<header>
+			<a href="index.html"><img src="images/miniLogo.png" alt="Primvol Logo"></a>
+			<h1>Волонтер Приморья</h1>
+		</header>
+		<nav>
+				<ul class="top-menu">
+					<li><a href="/home/">МЕРОПРИЯТИЯ</a></li>
+					<li><a href="/org">ОРГАНИЗАЦИИ</a></li>
+					<li><a href="/services/">ФОТОАЛЬБОМЫ</a></li>
+					<li><a href="/partners/">О НАС</a></li>
+			</ul>
+		</nav>
+		<div id="slider-wrap">
+			<div id="slider">
+				<div class="slide">
+					<a href="index.html"><img src="images/6.jpg" alt="Primvol Logo" width = "900" height="427">></a>
+					<h1>Школа актива</h1>
+				</div>
+				<div class="slide"><a href="index.html"><img src="images/7.jpg" alt="Primvol Logo" width = "900"  height="427">></a></div>
+				<div class="slide"><a href="index.html"><img src="images/8.jpg" alt="Primvol Logo" width = "900" height="427">></a></div>
+				<div class="slide"><a href="index.html"><img src="images/9.jpg" alt="Primvol Logo" width = "900" height="427">></a></div>
+				<div class="slide"><a href="index.html"><img src="images/10.jpg" alt="Primvol Logo" width = "900"  height="427">></a></div>
+			</div>
+		</div>
+		<div id="leftBar"></div>
+		<div id="rightBar"></div>
+		<section></section>
+	</div>
+	<footer></footer>
+</body>
+</html>

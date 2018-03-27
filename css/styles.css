@@ -1,0 +1,126 @@
+body {
+	color:#00000; /*черный цвет шрифта, пожалуйста*/
+	font-family: 'Roboto', sans-serif; /*шрифт тахома, пожалуйста*/
+	background-color: #fffff; /*белый цвет фона, пожалуйста*/
+	font-size: 12px;
+}
+#wrapper {
+	max-width: 960px;
+	margin: auto;
+}
+header {
+	padding: 20px 40px; /* чтобы не в самом углу, пожалуйста*/
+	display:inline-block; /* чтобы в одну строку, пожалуйста*/
+}
+header  h1 {
+	color: #0; /* цвет надписи */
+	font-size: 42px; /* побольше размерчик, пожалуйста*/
+	float:right; /*справа от руки, пожалуйста*/
+	padding: 20px 30px; /* отступ от лого, пожалуйста*/
+}
+nav {
+	background: #e700fe;
+	margin:auto;
+	font-size: 34px;
+	border-radius: 10px;
+}
+nav a {
+	text-decoration:none; /* подчеркивание с ссылок убрали, пожалуйста*/
+}
+nav ul { /* отступ убрали, пожалуйста*/
+	margin: 0;
+	padding: 0; 
+}
+nav li { /*атрибуты списка */
+	list-style-image: none;
+}
+.top-menu {
+	list-style: none;
+	margin-left: 12px;
+}
+.top-menu li { /* вот эта штука их все по горизонтали делает */
+	float:left; /* в одну линию !!! */
+	padding: 5px 0px; /* первая цифра - отступ сверху, вторая - между словами  */
+	margin-right: 2px; /* ниче не меняет */
+	vertical-align: middle;
+	font-size: 24px;
+}
+.top-menu li a {
+	display: block;
+	padding: 15px 40px; /* первая - высота, вторая - ширина */
+	color:#ffffff;
+	background: #fe0000; /* e700fe - фиолетовый, fe0000 - красный, 0401fe - синий, 82ff51 -кислотный, 16e911 - другой кислотный */
+	border-radius: 10px;
+}
+.top-menu li a:hover {
+	background: #ff6969;
+	color: #ffffff;
+}
+
+#slider-wrap{ /* Оболочка слайдера и кнопок */
+	width:960px; /* оболочка для слайдера - его ширина должна быть под навигацию */
+	background-color: #f2a9a9; /* цвет фона*/
+	border-radius: 10px;
+	}
+#slider{ /* Оболочка слайдера */
+	margin:auto; /*сделал по центру*/
+	width:900px; /* щирина и высота */
+	height:427px;
+	overflow: hidden; /*чтобы за границы сверху не выходил*/
+	border:#eee solid 10px; /*вот эта граница вокруг слайдера*/
+	position:relative; /*чтобы позиции занимал подобающую*/
+	}
+.slide{ /* Слайд */
+	width:100%; /*чтобы не сжимала, пожалуйста*/
+	height:100%;
+	position:relative;
+	}
+.slide h1 {
+	position: absolute;
+	top: 200px;
+	left: 0;
+	width: 100%;
+}
+	/*пока без радио буттонов
+.sli-links{ /* Кнопки смены слайдов 
+	margin-top:10px; /*радио буттоны снизу и отступ для них
+	text-align:center; /*их по центру делаем 
+	}
+.sli-links .control-slide{
+	margin:2px;
+	display:inline-block; /*в строку их*
+	width:16px;
+	height:16px;
+	overflow:hidden; 
+	text-indent:-9999px; /*цифры ненужные уносит далеко-далеко от этой строки 
+	background:url(radioBg.png) center bottom no-repeat; /*картинки для буттонов
+	}
+.sli-links .control-slide:hover{
+	cursor:pointer; /*когда наводим на кнопки, меняем курсор 
+	background-position:center center; /*вдавливаем
+	}
+.sli-links .control-slide.active{
+	background-position:center top; /* нажатая кнопка 
+	} */
+#prewbutton, #nextbutton{ /* Ссылка "Следующий" и "Предыдущий" */
+	display:block;
+	width:15px;
+	height:100%;
+	position:absolute;
+	top:0;
+	overflow:hidden;
+	text-indent:-999px;
+	background:url(arrowBg.png) left center no-repeat;
+	opacity:0.8;
+	z-index:3;
+	outline:none !important;
+	}
+#prewbutton{
+	left:10px;
+	}
+#nextbutton{
+	right:10px;
+	background:url(arrowBg.png) right center no-repeat;
+	}
+#prewbutton:hover, #nextbutton:hover{
+	opacity:1;}
